@@ -1,0 +1,233 @@
+body {
+  background-color: #fff5e4;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: rgb(24, 22, 39);
+  font-size: larger;
+  font-weight: 300;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: x-large;
+}
+.links {
+  color: black;
+  text-decoration: none;
+}
+
+/*==================== GOOGLE FONTS ====================*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*==================== VARIABLES CSS ====================*/
+:root {
+  --header-height: 3rem;
+  --side-margin: 1.5rem;
+  --link-sepration: 1.5rem;
+  /*========== Colors ==========*/
+  /* Change favorite color */
+  --hue-color: 28; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+  /* HSL color mode */
+  --first-color: #bdcdd6;
+  --first-color-second: ;
+  --first-color-alt: #93bfcf;
+  --first-color-lighter: ;
+  --title-color: balck;
+  --text-color: rgb(85, 85, 85);
+  --text-color-light: #d3d3d3;
+  --input-color: #969ba5;
+  --body-color: hsl(var(--hue-color), 100%, 95%);
+  --container-color: #fff;
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+
+  /*========== Font and typography ==========*/
+
+  --body-font: "Poppins", sans-serif;
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+
+  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /*========== z index ==========*/
+
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Font size for large devices */
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3rem;
+    --side-margin: 3rem;
+    --link-sepration: 3rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/* Font size for small devices */
+@media screen and (max-width: 552px) {
+    .navbar__link
+    {
+        display: none;
+    }
+}
+
+/*========== Variables Dark theme ==========*/
+
+/*========== Button Dark/Light ==========*/
+
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0 0 var(--header-height) 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+/*==================== CUSTOM CSS ====================*/
+
+.navbar {
+  background-color: rgb(24, 22, 39);
+  font-size: larger;
+  font-weight: 300;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: x-large;
+}
+.links {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  align-items: center;
+  padding: 0 var(--side-margin);
+}
+
+.title__section {
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: var(--font-medium);
+}
+
+.site__title {
+  font-size: var(--h1-font-size);
+}
+
+.title__section img {
+  width: 2.5rem;
+  margin-right: var(--mb-0-75);
+}
+
+.profile__section {
+  width: max-content;
+}
+
+.profile__icon {
+  width: 2.5rem;
+}
+
+.navbar__link_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__link {
+  padding: 20px 0;
+  margin: 0 var(--link-sepration);
+  color: var(--title-color);
+  font-size: var(--h4-font-size);
+  font-weight: 500;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar__link:hover {
+  opacity: 1;
+  color: var(--title-color);
+  text-decoration: none;
+}
+
+.active {
+  font: bold;
+  opacity: 1;
+}
+
+.active::before {
+  height: 5px;
+  content: "";
+  position: absolute;
+  background-color: #c69501;
+  width: 100%;
+  bottom: 10px;
+  opacity: 1;
+}
