@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken');
-const JWTsignature = process.env.JWTsignature;
+require("dotenv").config();
+let JWTsignature = process.env.REACT_APP_JWTSIGNATURE;
 
 const fetchuser = (req, res, next) => {
     const given_token = req.header('auth-token')

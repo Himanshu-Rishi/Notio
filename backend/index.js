@@ -4,7 +4,6 @@ const cors = require("cors")
 const app = express()
 const port = 5000
 app.use(cors())
-
 app.use(express.json())
 
 connectToMongo();
@@ -16,5 +15,5 @@ app.use('/api/notes', require('./routes/note'));
 
 app.listen(port, ()=>
 {
-    console.log(`iNotebook backend is running`)
+    console.log(`Notio backend is running`)
 })

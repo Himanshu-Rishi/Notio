@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
 const SignUp = () => {
     let navigate = useNavigate();
     const [credentials, setcredentials] = useState({name: "", email: "", password: "", cpassword: ""});

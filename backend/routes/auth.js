@@ -5,11 +5,12 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser');
-const JWTsignature = process.env.JWTsignature;
+require("dotenv").config();
+let JWTsignature = process.env.REACT_APP_JWTSIGNATURE;
 router.post(
   "/createuser",
   [
-    body("name", "Enter a valid name").isLength({ min: 3 }),
+    body("name", "Enter a valid name").isLength({ min: 2 }),
     body("email", "Enter a valid email").isEmail(),
     body("password", "Password must be atleast 5 characters").isLength({
       min: 5,
@@ -26,7 +27,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({success, error: "Sorry a user with this email already exists" });
+          .json({success, error: "Sorry a user with this email already exists ...!" });
       }
       const salt = await bcrypt.genSalt(10);
       const hashed_pswrd = await bcrypt.hash(req.body.password, salt);
@@ -46,7 +47,6 @@ router.post(
     success = true;
       res.json({success, token });
     } catch (error) {
-      console.error(error.message);
       res.status(500).send("Internal Server Error");
     }
   }
@@ -60,7 +60,7 @@ router.post('/login', [
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({success, errors: errors.array() });
   }
 
   const { email, password } = req.body;
@@ -87,12 +87,10 @@ router.post('/login', [
       }
     }
     const token = jwt.sign(data, JWTsignature);
-    console.log(token);
     success = true;
     res.json({ success, token })
 
   } catch (error) {
-    console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -105,7 +103,6 @@ router.post('/getuser', fetchuser,  async (req, res) => {
     const user = await User.findById(userId).select("-password")
     res.send(user)
   } catch (error) {
-    console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
 })

@@ -1,7 +1,7 @@
 import Notecontext from "./Notecontext"
 import { useState } from "react"
 const Notestate = (props) => {
-    const host = process.env.Backend_url;
+    const host = process.env.REACT_APP_BACKEND_URL;
     const [notes, setnotes] = useState([])
 
     // add
