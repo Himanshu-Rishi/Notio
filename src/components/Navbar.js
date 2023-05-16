@@ -132,12 +132,20 @@ export default function Navbar() {
           </div>
         ) : (
           <div>
-            <Button variant="contained">
+            <Button
+              variant="contained"
+              color="inherit"
+              sx={{ margin: "0 1rem", boxShadow: "none" }}
+            >
               <Link to="/login" className="links">
                 Login
               </Link>
             </Button>
-            <Button variant="contained">
+            <Button
+              variant="contained"
+              color="inherit"
+              sx={{ margin: "0 1rem", boxShadow: "none" }}
+            >
               <Link to="/signup" className="links">
                 SignUp
               </Link>

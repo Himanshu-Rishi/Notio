@@ -37,38 +37,44 @@ const Login = () => {
   return (
     <>
       <Toaster reverseOrder={false} position="top-center" />
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="user_email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="user_email"
-            aria-describedby="emailHelp"
-            name="email"
-            value={credentials.email}
-            onChange={onChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="user_password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="user_password"
-            name="password"
-            value={credentials.password}
-            onChange={onChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      <div className="login__box">
+        <h2 className="login__heading">Login</h2>
+        <p className="login__subheading">Happy to see you again..!</p>
+        <form className="login__container login__form" onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="user_email" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control input__field"
+              id="user_email"
+              aria-describedby="emailHelp"
+              name="email"
+              value={credentials.email}
+              onChange={onChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="user_password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control input__field"
+              id="user_password"
+              name="password"
+              value={credentials.password}
+              onChange={onChange}
+            />
+          </div>
+          <div style={{display: "flex", justifyContent: "center", marginTop: "1.5rem"}}>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

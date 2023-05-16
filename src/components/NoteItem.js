@@ -73,7 +73,6 @@ const Noteitem = (props) => {
             </div>
             <div>
               <p className="note__date">{myDate.slice(0, 10)}</p>
-              {/* <p className="note__date">{note.date}</p> */}
             </div>
           </div>
         </div>
