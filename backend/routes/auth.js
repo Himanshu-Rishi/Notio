@@ -2,12 +2,12 @@ const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
+require("dotenv").config();
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var fetchuser = require("../middleware/fetchuser");
-let JWTsignature = "adjfhadsjfbasdfnjlandfadfadfwelmvc";
-router.post(
-  "/createuser",
+let JWTsignature = process.env.JWT_SIGNATURE;
+router.post("/createuser",
   [
     body("name", "Name must be atleast 3 characters ..!").isLength({
       min: 3,
@@ -54,8 +54,7 @@ router.post(
   }
 );
 
-router.post(
-  "/login",
+router.post("/login",
   [
     body("email", "Enter a valid email ..!").isEmail(),
     body("password", "Password cannot be blank ..!").exists(),
