@@ -10,7 +10,7 @@ import "./NoteItem.css";
 
 const Noteitem = (props) => {
   const { note, updateNote } = props;
-  const [bgColor, setBgColor] = useState("black");
+  const [bgColor, setBgColor] = useState("#ffe082");
   const context = useContext(Notecontext);
   const { deletenotes, editnotes } = context;
   const changeColor = () => {
@@ -22,11 +22,12 @@ const Noteitem = (props) => {
       toast.success("Added to Important");
     }
   };
+  let myDate = note.date;
   useEffect(() => {
     if (note.nature) {
       setBgColor("red");
     } else {
-      setBgColor("black");
+      setBgColor("#ffe082");
     }
   }, [note.nature]);
 
@@ -71,7 +72,8 @@ const Noteitem = (props) => {
               </IconButton>
             </div>
             <div>
-              <p className="note__date">24 March</p>
+              <p className="note__date">{myDate.slice(0, 10)}</p>
+              {/* <p className="note__date">{note.date}</p> */}
             </div>
           </div>
         </div>
