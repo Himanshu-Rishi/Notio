@@ -22,7 +22,6 @@ const Noteitem = (props) => {
       toast.success("Added to Important");
     }
   };
-  let myDate = note.date;
   useEffect(() => {
     if (note.nature) {
       setBgColor("red");
@@ -33,50 +32,52 @@ const Noteitem = (props) => {
 
   return (
     <>
-      <div className="note_container">
-        <div className="note__card">
-          <div>
-            <div className="heading">
-              <p className="note__title">{note.title}</p>
-              <p className="note__tag">#{note.tag}</p>
-            </div>
-            <div className="description__section">
-              <p className="note__description">{note.description}</p>
-            </div>
-          </div>
-          <div className="note__bottom">
+      {note && (
+        <div className="note_container">
+          <div className="note__card">
             <div>
-              <IconButton
-                aria-label="add to important"
-                onClick={changeColor}
-                sx={{ color: bgColor }}
-              >
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton
-                aria-label="delete the note"
-                onClick={() => {
-                  deletenotes(note._id);
-                  toast.success("Note Deleted Successfully");
-                }}
-              >
-                <DeleteIcon />
-              </IconButton>
-              <IconButton
-                aria-label="edit the note"
-                onClick={() => {
-                  updateNote(note);
-                }}
-              >
-                <EditIcon />
-              </IconButton>
+              <div className="heading">
+                <p className="note__title">{note.title}</p>
+                <p className="note__tag">#{note.tag}</p>
+              </div>
+              <div className="description__section">
+                <p className="note__description">{note.description}</p>
+              </div>
             </div>
-            <div>
-              <p className="note__date">{myDate.slice(0, 10)}</p>
+            <div className="note__bottom">
+              <div>
+                <IconButton
+                  aria-label="add to important"
+                  onClick={changeColor}
+                  sx={{ color: bgColor }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="delete the note"
+                  onClick={() => {
+                    deletenotes(note._id);
+                    toast.success("Note Deleted Successfully");
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="edit the note"
+                  onClick={() => {
+                    updateNote(note);
+                  }}
+                >
+                  <EditIcon />
+                </IconButton>
+              </div>
+              <div>
+                <p className="note__date">{note.date ? (note.date.slice(0, 10)): null}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

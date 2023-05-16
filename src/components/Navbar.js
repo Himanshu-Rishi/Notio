@@ -34,7 +34,6 @@ export default function Navbar() {
         link.classList.add("active");
       } else {
         link.classList.remove("active");
-        console.log("no");
       }
     });
   }, [active_page]);
