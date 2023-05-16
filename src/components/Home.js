@@ -7,6 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 import NotesHome from "./NotesHome";
+import { Toaster, toast } from "react-hot-toast";
 function Home() {
     const [note, setnote] = useState({ "title": "", "description": "", "tag": "" });
     const { addnotes } = useContext(Notecontext);
@@ -22,8 +23,18 @@ function Home() {
         refClose_add.current.click();
         addnotes(note.title, note.description, note.tag);
         setnote({ "title": "", "description": "", "tag": "" })
+        if(note.title && note.description)
+        {
+            toast.success("Note added successfully");
+        }
+        else
+        {
+            toast.error("Add valid details for Note");
+        }
     }
     return (
+        <>
+        <Toaster reverseOrder={false} position="top-center" />
         <Container maxWidth="lg">
             <Container
                 sx={{
@@ -34,7 +45,7 @@ function Home() {
                 }}
             >
                 <Box>
-                    <Button variant="" sx={{ marginLeft: '0' }}><Link to="/home" className="links">All Notes</Link></Button>
+                    <Button variant="" sx={{ marginLeft: '0' }}><Link to="/" className="links">All Notes</Link></Button>
                     <Button variant=""><Link to="/important" className="links">Important</Link></Button>
                 </Box>
                 <Button variant="" startIcon={<AddIcon />} onClick={open}>
@@ -79,6 +90,7 @@ function Home() {
                 </div>
             </div>
         </Container>
+        </>
     );
 }
 

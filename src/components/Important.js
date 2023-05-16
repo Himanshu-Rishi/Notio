@@ -34,7 +34,7 @@ function Important() {
         }}
       >
         <Box>
-          <Button variant="" sx={{ marginLeft: '0' }}><Link to="/home" className="links">All Notes</Link></Button>
+          <Button variant="" sx={{ marginLeft: '0' }}><Link to="/" className="links">All Notes</Link></Button>
           <Button variant=""><Link to="/important" className="links">Important</Link></Button>
         </Box>
         <Button variant="" startIcon={<AddIcon />} onClick={open}>

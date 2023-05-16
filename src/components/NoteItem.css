@@ -1,0 +1,54 @@
+.note_container {
+  max-width: 345px;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  margin: 0.5rem;
+  border: 2px solid rgba(190, 188, 188, 0.59);
+}
+
+.note__card {
+  margin: 0.75rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.note__title {
+  font-size: 1.75rem;
+  text-transform: capitalize;
+  font-weight: 530;
+}
+
+.note__tag {
+  text-transform: capitalize;
+  margin-top: -17px;
+}
+
+.note__description {
+  text-transform: capitalize;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.note__bottom
+{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.note__date
+{
+    margin: auto 0;
+    margin-left: 5rem;
+}
