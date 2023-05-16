@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Toaster, toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -7,7 +8,7 @@ const Login = () => {
     const handleSubmit = async(e)=>
     {
         e.preventDefault();
-        const host = 'http://localhost:5000'
+        const host = process.env.REACT_APP_BACKEND_URL;
         const response = await fetch(`${host}/api/auth/login`, {
             method: 'POST',
             headers: {
@@ -19,30 +20,57 @@ const Login = () => {
         if(json.success)
         {
             localStorage.setItem('token', json.token);
-            console.log(json)
             navigate('/');
         }
         else
         {
-            alert("Error")
+            if (json.validationError) {
+              toast.error(json.error[0].msg);
+            } else {
+              toast.error(json.error);
+            }
         }
     }
     const onChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
     }
   return (
+    <>
+      <Toaster reverseOrder={false} position="top-center" />
       <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-              <label htmlFor="user_email" className="form-label">Email address</label>
-              <input type="email" className="form-control" id="user_email" aria-describedby="emailHelp" name='email' value={credentials.email} onChange={onChange}/>
-          </div>
-          <div className="mb-3">
-              <label htmlFor="user_password" className="form-label">Password</label>
-              <input type="password" className="form-control" id="user_password" name='password' value={credentials.password} onChange={onChange} />
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+        <div className="mb-3">
+          <label htmlFor="user_email" className="form-label">
+            Email address
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="user_email"
+            aria-describedby="emailHelp"
+            name="email"
+            value={credentials.email}
+            onChange={onChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="user_password" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="user_password"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
-  )
+    </>
+  );
 }
 
 export default Login

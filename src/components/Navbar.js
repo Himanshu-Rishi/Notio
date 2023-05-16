@@ -32,10 +32,17 @@ export default function Navbar() {
     useEffect(() => {
       const nav_links = document.querySelectorAll(".navbar__link");
       nav_links.forEach((link) => {
-        if (link.href.includes(active_page)) {
+        if (link.href.includes(active_page) && active_page !== "/") {
           link.classList.add("active");
-        } else {
+        }
+        else if(active_page === "/")
+        {
+          link.classList.add("active");
+        }
+        else {
           link.classList.remove("active");
+          console.log("no");
+
         }
       });
     }, [active_page]);
@@ -46,7 +53,7 @@ export default function Navbar() {
         <span className="site__title">Notio</span>
       </div>
       <div className="navbar__link_section">
-        <Link to="/home" className="navbar__link active nav-link-fade-up">
+        <Link to="/" className="navbar__link active nav-link-fade-up">
           HOME
         </Link>
         <Link to="/about" className="navbar__link nav-link-fade-up">

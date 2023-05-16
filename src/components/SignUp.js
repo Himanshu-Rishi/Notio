@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import { Toaster, toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
     let navigate = useNavigate();
-    const [credentials, setcredentials] = useState({name: "", email: "", password: "", cpassword: ""});
+    const [credentials, setcredentials] = useState({name: "", email: "", password: ""});
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const host = 'http://localhost:5000'
+        const host = process.env.REACT_APP_BACKEND_URL;
         const response = await fetch(`${host}/api/auth/createuser`, {
             method: 'POST',
             headers: {
@@ -16,17 +17,25 @@ const SignUp = () => {
         const json = await response.json();
         if (json.success) {
             localStorage.setItem('token', json.token);
-            console.log(json)
             navigate('/');
         }
         else {
-            alert("Error")
+            if(json.validationError)
+            {
+                toast.error(json.error[0].msg)
+            }
+            else
+            {
+                toast.error(json.error)
+            }
         }
     }
     const onChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
     }
   return (
+    <>
+    <Toaster reverseOrder={false} position='top-center' />
       <form onSubmit={handleSubmit}>
           <div className="mb-3">
               <label htmlFor="user_name" className="form-label">Name</label>
@@ -40,12 +49,10 @@ const SignUp = () => {
               <label htmlFor="user_password" className="form-label">Password</label>
               <input type="password" className="form-control" id="user_password" name='password' value={credentials.password} onChange={onChange} />
           </div>
-          <div className="mb-3">
-              <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-              <input type="password" className="form-control" id="cpassword" name='cpassword' value={credentials.cpassword} onChange={onChange} />
-          </div>
           <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+    </>
+
   )
 }
 

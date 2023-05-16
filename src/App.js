@@ -3,6 +3,7 @@ import {
   BrowserRouter,
   Route,
   Routes,
+  useNavigate,
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -24,14 +25,13 @@ const theme = createTheme({
 })
 
 function App() {
-  
   return (
     <ThemeProvider theme={theme}>
     <Notestate>
       <BrowserRouter>
       <Navbar />
       <Routes>
-            <Route exact path="/home" element={<Home />}/>
+            <Route exact path="/" element={<Home />}/>
             <Route exact path="/important" element={<Important />}/>
             <Route exact path="/login" element={<Login />}/>
             <Route exact path="/signup" element={<SignUp />}/>
