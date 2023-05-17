@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -69,11 +69,12 @@ const Login = () => {
             />
           </div>
           <div style={{display: "flex", justifyContent: "center", marginTop: "1.5rem"}}>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" style={{backgroundColor: "#e0e0e0", color: 'black', border: "none"}}>
             Submit
           </button>
           </div>
         </form>
+        <p className="bottom__heading">Not a Member?<Link className='bottom__heading_link' to="/signup">Register</Link></p>
       </div>
     </>
   );

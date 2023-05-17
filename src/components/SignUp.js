@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const SignUp = () => {
     let navigate = useNavigate();
     const [credentials, setcredentials] = useState({name: "", email: "", password: ""});
@@ -35,25 +35,81 @@ const SignUp = () => {
     }
   return (
     <>
-    <Toaster reverseOrder={false} position='top-center' />
-      <form onSubmit={handleSubmit}>
+      <Toaster reverseOrder={false} position="top-center" />
+      <div className="login__box">
+        <h2 className="login__heading">Register</h2>
+        <p className="login__subheading">Join us to explore more stuff..!</p>
+        <form className="login__container login__form" onSubmit={handleSubmit}>
           <div className="mb-3">
-              <label htmlFor="user_name" className="form-label">Name</label>
-              <input type="text" className="form-control" id="user_name" aria-describedby="emailHelp" name='name' value={credentials.name} onChange={onChange} />
+            <label htmlFor="user_name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="user_name"
+              aria-describedby="emailHelp"
+              name="name"
+              value={credentials.name}
+              onChange={onChange}
+            />
           </div>
           <div className="mb-3">
-              <label htmlFor="user_email" className="form-label">Email address</label>
-              <input type="email" className="form-control" id="user_email" aria-describedby="emailHelp" name='email' value={credentials.email} onChange={onChange} />
+            <label htmlFor="user_email" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="user_email"
+              aria-describedby="emailHelp"
+              name="email"
+              value={credentials.email}
+              onChange={onChange}
+            />
           </div>
           <div className="mb-3">
-              <label htmlFor="user_password" className="form-label">Password</label>
-              <input type="password" className="form-control" id="user_password" name='password' value={credentials.password} onChange={onChange} />
+            <label htmlFor="user_password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="user_password"
+              name="password"
+              value={credentials.password}
+              onChange={onChange}
+            />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "1.5rem",
+            }}
+          >
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{
+                backgroundColor: "#e0e0e0",
+                color: "black",
+                border: "none",
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <p className="bottom__heading">
+          Already Member?
+          <Link className="bottom__heading_link" to="/login">
+            Login
+          </Link>
+        </p>
+      </div>
     </>
-
-  )
+  );
 }
 
 export default SignUp

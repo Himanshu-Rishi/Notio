@@ -39,10 +39,12 @@ export default function Navbar() {
   }, [active_page]);
   return (
     <div className="navbar__container">
+        <Link to="/" style={{color: "black"}}>
       <div className="title__section">
         <img src="/assets/logo.png" alt="Notio Logo" />
         <span className="site__title">Notio</span>
       </div>
+        </Link>
       <div className="navbar__link_section">
         <Link to="/" className="navbar__link active nav-link-fade-up">
           HOME
