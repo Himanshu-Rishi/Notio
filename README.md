@@ -1,6 +1,6 @@
 <div align="center">
   
-# Codlax
+# Notio
 
 <a href="https://notio-eight.vercel.app/">
   <img src="https://res.cloudinary.com/dwtntbtvy/image/upload/v1687415024/post-it_sn5th4.png" alt="Logo" width="80" height="80">  
