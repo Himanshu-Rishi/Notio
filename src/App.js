@@ -14,6 +14,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Profile from "./components/Profile";
 
 const theme = createTheme({
   palette: {
@@ -36,6 +37,7 @@ function App() {
             <Route exact path="/signup" element={<SignUp />}/>
             <Route exact path="/about" element={<About />}/>
             <Route exact path="/contact" element={<Contact />}/>
+            <Route exact path="/profile" element={<Profile />}/>
       </Routes>
       </BrowserRouter>
     </Notestate>

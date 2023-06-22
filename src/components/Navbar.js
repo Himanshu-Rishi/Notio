@@ -116,13 +116,15 @@ export default function Navbar() {
               }}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-            >
+              >
+              <Link style={{color: "black"}} to="/profile">
               <MenuItem onClick={handleClose}>
                 <ListItemIcon>
                   <PersonIcon fontSize="medium" />
                 </ListItemIcon>{" "}
                 Profile
               </MenuItem>
+              </Link>
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
                   <Logout fontSize="medium" />
