@@ -104,7 +104,7 @@ body {
 }
 
 /* Font size for small devices */
-@media screen and (max-width: 552px) {
+@media screen and (max-width: 700px) {
     .navbar__link
     {
         display: none;
@@ -283,10 +283,4 @@ a {
 .bottom__heading_link:hover
 {
   color: darkgray;
-}
-
-@media screen and (max-width: 480px) {
-  .button__box{
-    flex-direction: column;
-  }
 }
