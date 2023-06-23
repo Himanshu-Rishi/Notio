@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 const SignUp = () => {
+  const [loading, setloading] = useState(false);
     let navigate = useNavigate();
     const [credentials, setcredentials] = useState({name: "", email: "", password: ""});
     const handleSubmit = async (e) => {
@@ -20,6 +21,7 @@ const SignUp = () => {
             navigate('/');
         }
         else {
+          setloading(false);
             if(json.validationError)
             {
                 toast.error(json.error[0].msg)
@@ -96,8 +98,17 @@ const SignUp = () => {
                 color: "black",
                 border: "none",
               }}
+              onClick={()=>{
+                setloading(true)
+              }}
             >
-              Submit
+              {loading ? (
+                <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </form>

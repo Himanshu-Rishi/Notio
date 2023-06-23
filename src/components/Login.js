@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   let navigate = useNavigate();
+  const [loading, setloading] = useState(false)
   const [credentials, setcredentials] = useState({ email: "", password: "" });
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ const Login = () => {
       localStorage.setItem("token", json.token);
       navigate("/");
     } else {
+      setloading(false);
       if (json.validationError) {
         toast.error(json.error[0].msg);
       } else {
@@ -81,9 +83,22 @@ const Login = () => {
                 backgroundColor: "#e0e0e0",
                 color: "black",
                 border: "none",
+                Width: "2.5rem",
+              }}
+              onClick={() => {
+                setloading(true);
               }}
             >
-              Submit
+              {loading ? (
+                <div
+                  className="spinner-border"
+                  role="status"
+                >
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </form>
