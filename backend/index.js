@@ -10,6 +10,10 @@ app.use(express.json())
 connectToMongo();
 
 // Available routes
+app.get('/', (req, res)=>
+{
+    res.send('Hello User, Welcome to notio')
+});
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/note'));
 

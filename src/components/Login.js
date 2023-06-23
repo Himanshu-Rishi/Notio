@@ -1,39 +1,38 @@
-import React, { useState } from 'react'
-import { Toaster, toast } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    let navigate = useNavigate();
-    const [credentials, setcredentials] = useState({email: "", password: ""});
-    const handleSubmit = async(e)=>
-    {
-        e.preventDefault();
-        const host = process.env.REACT_APP_BACKEND_URL;
-        const response = await fetch(`${host}/api/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: credentials.email, password: credentials.password })
-        });
-        const json = await response.json();
-        if(json.success)
-        {
-            localStorage.setItem('token', json.token);
-            navigate('/');
-        }
-        else
-        {
-            if (json.validationError) {
-              toast.error(json.error[0].msg);
-            } else {
-              toast.error(json.error);
-            }
-        }
+  let navigate = useNavigate();
+  const [credentials, setcredentials] = useState({ email: "", password: "" });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const host = process.env.REACT_APP_BACKEND_URL;
+    const response = await fetch(`${host}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password,
+      }),
+    });
+    const json = await response.json();
+    if (json.success) {
+      localStorage.setItem("token", json.token);
+      navigate("/");
+    } else {
+      if (json.validationError) {
+        toast.error(json.error[0].msg);
+      } else {
+        toast.error(json.error);
+      }
     }
-    const onChange = (e) => {
-        setcredentials({ ...credentials, [e.target.name]: e.target.value })
-    }
+  };
+  const onChange = (e) => {
+    setcredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <Toaster reverseOrder={false} position="top-center" />
@@ -68,16 +67,35 @@ const Login = () => {
               onChange={onChange}
             />
           </div>
-          <div style={{display: "flex", justifyContent: "center", marginTop: "1.5rem"}}>
-          <button type="submit" className="btn btn-primary" style={{backgroundColor: "#e0e0e0", color: 'black', border: "none"}}>
-            Submit
-          </button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "1.5rem",
+            }}
+          >
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{
+                backgroundColor: "#e0e0e0",
+                color: "black",
+                border: "none",
+              }}
+            >
+              Submit
+            </button>
           </div>
         </form>
-        <p className="bottom__heading">Not a Member?<Link className='bottom__heading_link' to="/signup">Register</Link></p>
+        <p className="bottom__heading">
+          Not a Member?
+          <Link className="bottom__heading_link" to="/signup">
+            Register
+          </Link>
+        </p>
       </div>
     </>
   );
-}
+};
 
-export default Login
+export default Login;
