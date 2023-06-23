@@ -134,7 +134,7 @@ export default function Navbar() {
             </Menu>
           </div>
         ) : (
-          <div>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Link to="/login" className="links">
             <Button
               variant="contained"
