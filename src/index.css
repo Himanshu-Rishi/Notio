@@ -284,3 +284,9 @@ a {
 {
   color: darkgray;
 }
+
+@media screen and (max-width: 480px) {
+  .button__box{
+    flex-direction: column;
+  }
+}
